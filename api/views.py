@@ -17,10 +17,10 @@ def add_movie():
 
 @main.route('/movies')
 def movies():
-    # movie_list = Movie.query.all()
+    movie_list = Movie.query.all() # Movieテーブルをクエリする必要
     movies = []
 
-    # for movie in movie_list:
-        # movies.append({'title' : movie.title, 'rating' : movie.rating})
+    for movie in movie_list:
+        movies.append({'title' : movie.title, 'rating' : movie.rating}) # 辞書を追加
 
     return jsonify({'movies' : movies})
