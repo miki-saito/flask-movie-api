@@ -1,17 +1,17 @@
-from flask import Blueprint, jsonify #, request
-# from . import db 
-# from .models import Movie
+from flask import Blueprint, jsonify, request
+from . import db # .からdbをインポート
+from .models import Movie #.modelsからMovieをインポート、.がプロジェクトに関連
 
 main = Blueprint('main', __name__)
 
 @main.route('/add_movie', methods=['POST'])
 def add_movie():
-    # movie_data = request.get_json()
+    movie_data = request.get_json() # JSONデータを取得する。
 
-    # new_movie = Movie(title=movie_data['title'], rating=movie_data['rating'])
+    new_movie = Movie(title=movie_data['title'], rating=movie_data['rating']) # new_movie呼び出し
 
-    # db.session.add(new_movie)
-    # db.session.commit()
+    db.session.add(new_movie) # db追加、new_movieを追加
+    db.session.commit() # db.sessionをコミット
 
     return 'Done', 201
 
